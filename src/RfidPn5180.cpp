@@ -284,7 +284,7 @@ void RfidPn5180_Task(void *parameter) {
 		bool sameCardReapplied = false;
 
 		if (RFID_PN5180_STATE_INIT == stateMachine) {
-			nfc14443.begin();
+			nfc14443.begin(RFID_SCK, RFID_MISO, RFID_MOSI, RFID_CS);
 			nfc14443.reset();
 			// Lower than the library default (500ms): transceiveCommand()'s BUSY-pin wait loops
 			// should normally resolve in well under this, so fail/retry faster if the chip is
@@ -555,7 +555,7 @@ void Rfid_EnableLpcd(void) {
 		return;
 	}
 	static PN5180 nfc(RFID_CS, RFID_BUSY, RFID_RST);
-	nfc.begin();
+	nfc.begin(RFID_SCK, RFID_MISO, RFID_MOSI, RFID_CS);
 	nfc.reset();
 	// show PN5180 reader version
 	uint8_t firmwareVersion[2];
@@ -615,7 +615,7 @@ void RfidPn5180_WakeupCheck(void) {
 	bool cardInNVS = false;
 
 	static PN5180ISO14443 nfc14443(RFID_CS, RFID_BUSY, RFID_RST);
-	nfc14443.begin();
+	nfc14443.begin(RFID_SCK, RFID_MISO, RFID_MOSI, RFID_CS);
 	nfc14443.reset();
 	// enable RF field
 	nfc14443.setupRF();

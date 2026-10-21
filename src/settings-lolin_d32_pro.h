@@ -40,9 +40,9 @@
     #define RFID_SCK                        14          // GPIO for clock-signal (RFID)
 
     #if defined(RFID_READER_TYPE_RUNTIME)
-        #define RFID_BUSY                   33          // PN5180 BUSY PIN
+        #define RFID_BUSY                   36          // PN5180 BUSY PIN
         #define RFID_RST                    22          // PN5180 RESET PIN
-        #define RFID_IRQ                    39          // PN5180 IRQ PIN (only needed for low power card detection)
+        #define RFID_IRQ                    99          // PN5180 IRQ PIN (only needed for low power card detection)
     #endif
     // I2S (DAC)
     #define I2S_DOUT                        25          // Digital out (I2S)
@@ -62,8 +62,8 @@
 
     // Control-buttons (set to 99 to DISABLE; 0->39 for GPIO; 100->115 for port-expander)
     #define NEXT_BUTTON                     33          // Button 0: GPIO to detect next
-    #define PREVIOUS_BUTTON                  2          // Button 1: GPIO to detect previous
-    #define PAUSEPLAY_BUTTON                36          // Button 2: GPIO to detect pause/play
+    #define PREVIOUS_BUTTON                  5          // Button 1: GPIO to detect previous
+    #define PAUSEPLAY_BUTTON                99          // Button 2: GPIO to detect pause/play
     #define ROTARYENCODER_BUTTON            32          // (set to 99 to disable; 0->39 for GPIO; 100->115 for port-expander)
     #define BUTTON_4                        99          // Button 4: unnamed optional button
     #define BUTTON_5                        99          // Button 5: unnamed optional button
@@ -78,7 +78,7 @@
 
     // I2C-configuration (necessary for RC522 [only via i2c - not spi!] or port-expander)
     #ifdef I2C_2_ENABLE
-        #define ext_IIC_CLK                 5           // i2c-SCL (clock)
+        #define ext_IIC_CLK                 0           // i2c-SCL (clock)
         #define ext_IIC_DATA                2           // i2c-SDA (data)
     #endif
 
