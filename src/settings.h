@@ -60,7 +60,7 @@
 	// 1 = MFRC522 (SPI)
 	// 2 = MFRC522 (I2C)
 	// 3 = PN5180
-	#define RFID_READER_TYPE_RUNTIME 3    // Default to Auto-detect
+	#define RFID_READER_TYPE_RUNTIME 1    // Default to MFRC522 (SPI)
 
 	#if defined(RFID_READER_TYPE_RUNTIME)
 		#define MFRC522_ADDR 0x28           // default I2C-address of MFRC522

@@ -84,6 +84,14 @@ void Button_Init() {
 	#endif
 #endif
 
+	// currentState is active-low (false = pressed) and Button_ReadAllStates() only ever writes it for enabled
+	// buttons. Without this, a disabled button (pin 99) keeps its zeroed state and reads as permanently held
+	// -- and if it has a rotary action, Button_GetHeldModifier() hijacks every turn of the encoder from volume.
+	for (auto &btn : gButtons) {
+		btn.currentState = true;
+		btn.lastState = true;
+	}
+
 // Activate internal pullups for all enabled buttons connected to GPIOs
 #ifdef BUTTON_0_ENABLE
 	if (BUTTON_0_ACTIVE_STATE) {
